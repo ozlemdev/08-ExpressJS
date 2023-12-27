@@ -1,30 +1,28 @@
 "use strict";
-/* ------------------------------------------------
-  EXPRESSJS
--------------------------------------------------- */
-
+/* -------------------------------------------------------
+    EXPRESSJS
+------------------------------------------------------- */
 /*
  * npm init -y
- * npm i espress dotenv
+ * npm i express dotenv
  */
 
 /* ExpressJS Start */
-
 const express = require("express"); // Assing expressFramework to express variable.
-const { request } = require("http");
 const app = express(); // run application on express.
 
 /* ENV */
-// dosya içeriğini çalıştırma
-
 require("dotenv").config();
-//console.log(process.env);
-const HOST = process.env.HOST || "http://localhost";
+console.log(process.env);
+const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || 8000;
-/*-------------------------------------------------- */
+/*------------------------------------------------------- */
+/* HTTP_Methods & URLLS */
 
-app.get("/", (request, response) => {});
+app.get("/", (request, response) => {
+  response.send(" Welcome to Express");
+});
 
-/*-------------------------------------------------- */
-app.listen(PORT, () => console.log("Running on ${HOST}:${PORT} "));
-/*-------------------------------------------------- */
+/*------------------------------------------------------- */
+//app.listen(PORT, () => console.log(`Running on http:127.0.0.1:${PORT}`));
+app.listen(PORT, () => console.log(`Running on http://${HOST}:${PORT}`));
