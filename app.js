@@ -9,6 +9,7 @@
 
 /* ExpressJS Start */
 const express = require("express"); // Assing expressFramework to express variable.
+const { request } = require("https");
 const app = express(); // run application on express.
 
 /* ENV */
@@ -20,9 +21,22 @@ const PORT = process.env.PORT || 8000;
 /* HTTP_Methods & URLLS */
 
 app.get("/", (request, response) => {
-  response.send(" Welcome to Express");
+  //response.send(" Welcome to Express");
+  response.send({ message: 'called in "get" method' });
 });
-
+app.post("/", (request, response) =>
+  response.send({ message: 'called in "post" method' })
+);
+app.put("/", (request, response) =>
+  response.send({ message: 'called in "put" method' })
+);
+app.delete("/", (request, response) =>
+  response.send({ message: 'called in "delete" method' })
+);
+//? allow at all methods:
+app.all("/", (request, response) =>
+  response.send({ message: ' "all" option allows to all method.' })
+);
 /*------------------------------------------------------- */
 //app.listen(PORT, () => console.log(`Running on http:127.0.0.1:${PORT}`));
 app.listen(PORT, () => console.log(`Running on http://${HOST}:${PORT}`));
