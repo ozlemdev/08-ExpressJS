@@ -54,7 +54,14 @@ app
   .delete((req, res) => res.send("delete"));
 
 /*------------------------------------------------------- */
-/*URL Options */
+/*URL (Path)Options */
+app.get("/", (req, res) => res.send("in 'root' path")); // '/' == root/
+app.get("/path", (req, res) => res.send("in 'patht' ")); // '/path' == '/path/'
+
+//? express-urls supported JokerChar:
+//app.get("/abc(x)123", (req, res) => res.send("in 'abc123' "));
+app.get("/abcx?123", (req, res) => res.send("in 'abc(x?)123' ")); // abc123 or abcx123
+app.get("/abc*123", (req, res) => res.send("in 'abc*123' ")); // abc1123 or abc...123
 
 /*------------------------------------------------------- */
 /*------------------------------------------------------- */
