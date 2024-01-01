@@ -73,9 +73,11 @@ app.get(/abc$/, (req, res) => res.send("regexp /xyz$/")); // url  endswith = 'xy
 /*------------------------------------------------------- */
 /* URL Parameters (req.params) */
 
-// user /user//99/confing/update
+// /user/66/config/update/any/any/any
 app.get("/user/:userId/config/:configParam/*", (req, res) => {
   res.send({
+    userId: req.params.userId,
+    configParam: req.params.configParam,
     url: {
       protocol: req.protocol,
       subdomains: req.subdomains,
@@ -86,6 +88,14 @@ app.get("/user/:userId/config/:configParam/*", (req, res) => {
       path: req.path,
       originalUrls: req.originalUrl,
     },
+  });
+});
+/*------------------------------------------------------- */
+//? '/d' means only-digit-chars in regexp:
+app.get("/user/:userId([0-9]+)", (req, res) => {
+  //app.get('/user/:userId(\\d+)', (req, res) => {
+  res.send({
+    params: req.params,
   });
 });
 /*------------------------------------------------------- */
