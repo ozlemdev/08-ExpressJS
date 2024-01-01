@@ -62,8 +62,13 @@ app.get("/path", (req, res) => res.send("in 'patht' ")); // '/path' == '/path/'
 //app.get("/abc(x)123", (req, res) => res.send("in 'abc123' "));
 app.get("/abcx?123", (req, res) => res.send("in 'abc(x?)123' ")); // abc123 or abcx123
 app.get("/abc*123", (req, res) => res.send("in 'abc*123' ")); // abc1123 or abc...123
-
+app.get("/abc(x+)123", (req, res) => res.send("in 'abc(x+)123' ")); // abc123 or abcxxxx....xx123
 /*------------------------------------------------------- */
+//?  express-urls supported regexp:
+app.get(/xyz/, (req, res) => res.send("regexp /xyz/")); // url  contains = 'xyz' (no limit for subPaths)
+app.get(/^xyz/, (req, res) => res.send("regexp /xyz^/")); // url  startswith = 'xyz'
+app.get(/abc$/, (req, res) => res.send("regexp /xyz$/")); // url  endswith = 'xyz'
+
 /*------------------------------------------------------- */
 
 //app.listen(PORT, () => console.log(`Running on http:127.0.0.1:${PORT}`));
