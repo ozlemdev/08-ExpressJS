@@ -112,7 +112,7 @@ app.get("/command/:userId-:profileId", (req, res) => {});
 //? JSON (.send() method already does this converting.)
 / app.get('/', (req, res) => res.json([{ key: 'value' }]))
  //?  Download File (Download at browser):
-/ app.get('/download', (req, res) => res.download('./app.js', 'changedName.js'))
+  app.get('/download', (req, res) => res.download('./app.js', 'changedName.js'))
 //? SendFile Content:
 / console.log( __dirname )
 / app.get('/file', (req, res) => res.sendFile(__dirname + '/app.js')) // FilePath must be realPath
@@ -121,6 +121,6 @@ app.get("/command/:userId-:profileId", (req, res) => {});
 / app.get('/redirect', (req, res) => res.redirect(302, '/thisPath')) // 301 or 302
 
 /*------------------------------------------------------- */
-
+app.get("/download", (req, res) => res.download("./app.js", "changedName.js"));
 //app.listen(PORT, () => console.log(`Running on http:127.0.0.1:${PORT}`));
 app.listen(PORT, () => console.log(`Running on http://${HOST}:${PORT}`));
