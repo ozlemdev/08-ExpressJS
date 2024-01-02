@@ -92,12 +92,13 @@ app.get("/user/:userId/config/:configParam/*", (req, res) => {
 });
 /*------------------------------------------------------- */
 //? '/d' means only-digit-chars in regexp:
-app.get("/user/:userId([0-9]+)", (req, res) => {
-  //app.get('/user/:userId(\\d+)', (req, res) => {
+//app.get("/user/:userId([0-9]+)", (req, res) => {
+app.get("/user/:userId(\\d+)", (req, res) => {
   res.send({
     params: req.params,
   });
 });
+app.get("/command/:userId-:profileId", (req, res) => {});
 /*------------------------------------------------------- */
 
 //app.listen(PORT, () => console.log(`Running on http:127.0.0.1:${PORT}`));
